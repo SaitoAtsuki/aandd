@@ -11,8 +11,16 @@
     <script>
         function runButtonPressed() {
             var numbers = [];
-            createOrderedRandomNumbers(numbers, 20);
+            //var numbers = [2, 5, 3, 6, 1];
+            //prac1-2 乱数を10個挿入する
+            for (i = 0; i < 10; i++) {
+                numbers.push(Math.floor(Math.random() * 10));
+            }
             show(numbers);
+
+            selectSort(numbers);
+            show(numbers);
+
         }
 
         //この関数を，aaandd.jsに加えてください．
@@ -48,12 +56,37 @@
                 document.getElementById('res').insertAdjacentHTML('beforeend', string);
             }
         }
+
+        function selectSort(numbers) { //リニアサーチ
+
+            for (var i = 0; i < numbers.length; i++) {
+                var lower = numbers[i]
+                var lowerIndex = i
+                for (var j = i; j < numbers.length; j++) {
+                    if (lower > numbers[j]) {
+                        lower = numbers[j]
+                        lowerIndex = j;
+                    }
+                }
+                console.log(numbers);
+                console.log(lowerIndex);
+                console.log(lower);
+                var temp = numbers[lowerIndex];
+                numbers[lowerIndex] = numbers[i];
+                numbers[i] = temp;
+            }
+
+        }
+            // console.log(numbers);
+            // console.log(lowerIndex);
+            // console.log(lower);
+
     </script>
 
 </head>
 
 <body>
-    <h1>ex4-3</h1>
+    <h1>select sort</h1>
     <button onclick="runButtonPressed()">run!</button>
     <p id="res"></p>
 </body>

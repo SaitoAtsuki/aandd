@@ -11,8 +11,15 @@
     <script>
         function runButtonPressed() {
             var numbers = [];
-            createOrderedRandomNumbers(numbers, 20);
+            //prac1-2 乱数を10個挿入する
+            for (i = 0; i < 10; i++) {
+                numbers.push(Math.floor(Math.random() * 10));
+            }
             show(numbers);
+
+            bubbleSort(numbers);
+            show(numbers);
+
         }
 
         //この関数を，aaandd.jsに加えてください．
@@ -48,12 +55,28 @@
                 document.getElementById('res').insertAdjacentHTML('beforeend', string);
             }
         }
+
+        function bubbleSort(numbers) {
+            //var lower = numbers[0];
+            for (var i = 0; i <= numbers.length; i++) {
+                for (var j = 0; j <= numbers.length; j++) {
+                    if (numbers[i] < numbers[j]) {
+                        let temp = numbers[i];
+                        numbers[i] = numbers[j];
+                        numbers[j] = temp;
+                        //console.log(numbers)
+                    } //最小値を発見している
+
+                } console.log(numbers)
+            }
+
+        }
     </script>
 
 </head>
 
 <body>
-    <h1>ex4-3</h1>
+    <h1>bubble sort</h1>
     <button onclick="runButtonPressed()">run!</button>
     <p id="res"></p>
 </body>

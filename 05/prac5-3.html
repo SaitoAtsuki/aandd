@@ -11,8 +11,17 @@
     <script>
         function runButtonPressed() {
             var numbers = [];
-            createOrderedRandomNumbers(numbers, 20);
+            //var numbers = [2, 5, 3, 6, 1];
+            //prac1-2 乱数を10個挿入する
+            for (i = 0; i < 10; i++) {
+                numbers.push(Math.floor(Math.random() * 10));
+            }
             show(numbers);
+
+            var array = insertSort(numbers);
+
+            show(array);
+
         }
 
         //この関数を，aaandd.jsに加えてください．
@@ -48,12 +57,46 @@
                 document.getElementById('res').insertAdjacentHTML('beforeend', string);
             }
         }
+
+        //         function insertSort(numbers) { //リニアサーチ
+        //             var newnum = [];
+        //             for (var i = 0; i < numbers.length; i++) {
+        //                 console.log(numbers);
+        //                 if (newnum[i] > numbers[i]) {
+        //                     newnum.push(numbers[i]);
+        //                 } else {
+        //                     newnum.push(numbers[i]);
+        //                 }
+        //                 for (var j = 0; j < newnum.length; j++) {
+        //                     if (newnum[j] < numbers[i]) {
+        // newnum.push(numbers[i])
+        //                     }
+        //                 }
+
+        //                 // var temp = numbers[lowerIndex];
+        //                 // numbers[lowerIndex] = numbers[i];
+        //                 // numbers[i] = temp;
+        //             }
+        //             console.log(newnum);
+        //             return newnum;
+        //         }
+        // console.log(numbers);
+        // console.log(lowerIndex);
+        // console.log(lower);
+
+        function insertSort(numbers) { //リニアサーチ
+            var newnumbers1 = [];
+            var newnumbers2 = [];
+            for (var i = 0; i < numbers.length; i++) {
+            }
+        }
+
     </script>
 
 </head>
 
 <body>
-    <h1>ex4-3</h1>
+    <h1>挿入sort</h1>
     <button onclick="runButtonPressed()">run!</button>
     <p id="res"></p>
 </body>
