@@ -10,32 +10,33 @@
 
     <script>
         function runButtonPressed() {
-            var numbers = [];
-            var numbers2 = [];
-            createOrderedRandomNumbers(numbers, 5, 50);
+            var numbers = [9];
+            var numbers2 = [5, 8, 13, 16, 22];
+            //createOrderedRandomNumbers(numbers, 5, 50);
             var startTime = new Date();
             //処理
             show(numbers);
             show(numbers2);
-            //並べ替えのプログラム
-            var miniindex = 0;
-            var min = 10000;
-            for (var j = 0; j < numbers.length; j++) {
-                for (var i = 0; i < numbers.length; i++) {
-                    if (numbers[i] < min) {
-                        min = numbers[i];
-                        miniindex = i;
+
+            var x = numbers[0];
+            for (var i = 0; i < numbers2.length; i++) {
+                if (numbers2[i] > x) {
+                    //iが挿入位置
+                    //右側に全部シフト
+                    for (var j = numbers2.length - 1; j >= i; j++); {
+                        numbers2[j + 1] = numbers2[j];
                     }
+                    numbers2[i] = numbers2;
+                    break;
                 }
-                numbers2.push(min);
-                numbers[miniindex] = 10000;
-
-                show(numbers);
-                show(numbers2);
             }
+
+            show(numbers);
+            show(numbers2);
+
             //処理終わり
-
-
+            var endTime = new Date();
+            var time = endTime - startTime;
         }
 
         //この関数を，aaandd.jsに加えてください．
@@ -101,7 +102,7 @@
 </head>
 
 <body>
-    <h1>select sort</h1>
+    <h1>select sort varT</h1>
     <button onclick="runButtonPressed()">run!</button>
     <p id="res"></p>
 </body>
