@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var text = document.getElementById('tf1').value;
+            show(text);
+            var stack = reverse(text);
+            show(stack);
+        }
+
+        function show(array) {
+            var html = '';
+            html = html + '<table border="1">';
+            html = html + '<tr>';
+            for (var i = 0; i < array.length; i++) {
+                html = html + '<td>' + array[i] + '</td>';
+            }
+            html = html + '</tr>';
+            html = html + '</table>';
+            //document.getElementById('res').innerHTML = html;
+            document.getElementById('res').insertAdjacentHTML('beforeend', html);
+        }
+
+        function reverse(text) {
+            var chars = text.split('');
+            console.log(chars);
+            var stack = [];
+            var n = chars.length;
+            for (var i = 0; i < n; i++) {
+                var word = chars.pop(i);
+                stack.push(word);
+            }
+            console.log(stack);
+            return stack;
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1>反転くん</h1>
+    <input id="tf1" type="text" value="こんにちは">
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
