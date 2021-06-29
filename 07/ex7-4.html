@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        var answers = {};
+
+        $().ready(function () {
+            answers['ありがとう'] = 'どういたしまして';
+            // answers['orange'] = 'みかん';
+            // answers['りんご'] = 'apple';
+            // answers['みかん'] = 'orange';
+        });
+
+        function commentButtonPressed() {
+            var yours = document.getElementById('tf1').value;
+            var kaito = answers[yours]
+            //console.log(yours);
+            if (kaito == undefined) {
+                document.getElementById('tf2').value = yours + "の意味について教えてください";
+            } else {
+                var ans = answers[yours];
+                document.getElementById('tf2').value = ans;
+            }
+        }
+
+        function runButtonPressed() {
+            var yours = document.getElementById('tf1').value;
+            var ans = document.getElementById('tf3').value;
+            answers[yours] = ans;
+
+            console.log(answers);
+            document.getElementById('res').innerHTML = "ok";
+            document.getElementById('tf3').value = "";
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1>bot</h1>
+    あなた：<input id="tf1" type="text" value="">
+    <br>
+    コンピュータ：<input id="tf2" type="text" value="" style="width: 200px;">
+    <button onclick="commentButtonPressed()">発言!</button>
+    <hr> 回答：<input id="tf3" type="text" value="">
+    <button onclick="runButtonPressed()">教える!</button>
+    <br>
+
+
+    <p id="res"></p>
+
+
+</body>
+
+</html>

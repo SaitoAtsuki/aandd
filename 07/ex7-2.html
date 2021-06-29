@@ -14,13 +14,17 @@
         $().ready(function () {
             fruits['apple'] = 'りんご';
             fruits['orange'] = 'みかん';
+            fruits['りんご'] = 'apple';
+            fruits['みかん'] = 'orange';
         });
 
         function registerButtonPressed() {
             var regEng = document.getElementById('tf3').value;
             var regJap = document.getElementById('tf4').value;
             fruits[regEng] = regJap;
-            window.alert("ok登録しました!")
+            fruits[regJap] = regEng;
+            document.getElementById('res').innerHTML = "ok";
+            console.log(fruits);
         }
 
         function runButtonPressed() {
@@ -40,11 +44,13 @@
     日本語：<input id="tf4" type="text" value="">
     <button onclick="registerButtonPressed()">登録!</button>
     <h1>検索</h1>
-    英語：<input id="tf1" type="text" value="">
+    見出し語：<input id="tf1" type="text" value="">
     <br>
-    日本語：<input id="tf2" type="text" value="">
+    検索結果：<input id="tf2" type="text" value="">
     <button onclick="runButtonPressed()">検索!</button>
     <p id="res"></p>
+
+
 </body>
 
 </html>
